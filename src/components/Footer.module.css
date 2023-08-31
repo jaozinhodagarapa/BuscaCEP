@@ -1,0 +1,14 @@
+.footer {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:  rgb(47, 111, 111);
+    color: rgb(35, 125, 204);
+}
+
+.footer span {
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
