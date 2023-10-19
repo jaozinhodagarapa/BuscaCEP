@@ -77,7 +77,7 @@ const Cadastro =() => {
                                     {cpf}
                                 </div>
                                 <div className='col-6'>
-                                    <label htmlFor="password" className='form-control'>Senha</label>
+                                    <label htmlFor="password" className='form-label'>Senha</label>
                                     <input type="text" name='password' className='form-control' required onChange={handleState}/>
                                     {password}
                                 </div>   
