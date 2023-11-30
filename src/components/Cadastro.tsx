@@ -10,6 +10,10 @@ const Cadastro =() => {
     const [email, setEmail] = useState<string>("");
     const [cpf, setCpf] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    const [nomeErro, setNomeErro] = useState<string>("")
+    const [emailErro, setEmailErro] = useState<string>("")
+    const [cpfErro, setCpfErro] = useState<string>("")
+    const [passwordErro, setPasswordErro] = useState<string>("")
 
     const cadastrarUsuario = (e:FormEvent) => {
         e.preventDefault();
@@ -22,7 +26,7 @@ const Cadastro =() => {
         
         }
 
-        axios.post('http://10.137.9.131:8000/api/store',
+        axios.post('http://10.137.9.136:8000/api/store',
         dados,
         {
             headers: {
@@ -31,6 +35,11 @@ const Cadastro =() => {
             }
         }
         ).then(function(response){
+            if(response.data.success === false){
+                if('nome' in response.data.error){
+                    setNomeErro(response.data.error.nome)
+                }
+            }
             window.location.href = "/Listagem"
         }).catch(function(error){
             console.log(error);
