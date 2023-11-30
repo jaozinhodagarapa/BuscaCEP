@@ -37,7 +37,16 @@ const Cadastro =() => {
         ).then(function(response){
             if(response.data.success === false){
                 if('nome' in response.data.error){
-                    setNomeErro(response.data.error.nome)
+                    setNomeErro(response.data.error.nome[0])
+                }
+                if('email' in response.data.error){
+                    setEmailErro(response.data.error.email[0])
+                }
+                if('cpf' in response.data.error){
+                    setCpfErro(response.data.error.cpf[0])
+                }
+                if('password' in response.data.error){
+                    setPasswordErro(response.data.error.pasword[0])
                 }
             }
             window.location.href = "/Listagem"
