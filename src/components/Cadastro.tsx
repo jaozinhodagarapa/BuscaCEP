@@ -16,6 +16,12 @@ const Cadastro =() => {
     const [passwordErro, setPasswordErro] = useState<string>("")
 
     const cadastrarUsuario = (e:FormEvent) => {
+        setNomeErro("")
+        setCpfErro("")
+        setEmailErro("")
+        setPasswordErro("")
+
+
         e.preventDefault();
 
         const dados = {
@@ -48,8 +54,9 @@ const Cadastro =() => {
                 if('password' in response.data.error){
                     setPasswordErro(response.data.error.pasword[0])
                 }
+            }else{
+           // window.location.href = "/Listagem"
             }
-            window.location.href = "/Listagem"
         }).catch(function(error){
             console.log(error);
         });
@@ -81,23 +88,27 @@ const Cadastro =() => {
                             <form onSubmit={cadastrarUsuario} className='row g-3'>
                                 <div className='col-6'>
                                     <label htmlFor="nome" className='form-label'>Nome</label>
-                                    <input type="text" name='nome' className='form-control' required  onChange={handleState}/>
-                                    {nome}
+                                    <input type="text" name='nome' className='form-control' required  onChange={handleState}
+                                    />
+                                 <div className='text-danger'>{nomeErro}</div>
                                 </div>
                                 <div className='col-6'>
                                     <label htmlFor="email" className='form-label'>E-mail</label>
-                                    <input type="text" name='email' className='form-control' required onChange={handleState}/>
-                                    {email}
+                                    <input type="text" name='email' className='form-control' required onChange={handleState}
+                                    />
+                                    <div className='text-danger'>{emailErro}</div>
                                 </div>
                                 <div className='col-6'>
                                     <label htmlFor="cpf" className='form-label'>CPF</label>
-                                    <input type="text" name="cpf" className='form-control' required onChange={handleState} />
-                                    {cpf}
+                                    <input type="text" name="cpf" className='form-control' required onChange={handleState}
+                                     />
+                                    <div className='text-danger'>{cpfErro}</div>
                                 </div>
                                 <div className='col-6'>
                                     <label htmlFor="password" className='form-label'>Senha</label>
-                                    <input type="text" name='password' className='form-control' required onChange={handleState}/>
-                                    {password}
+                                    <input type="text" name='password' className='form-control' required onChange={handleState}
+                                    />
+                                    <div className='text-danger'>{passwordErro}</div>
                                 </div>   
                                 <div className='col-12'>
                                     <button type='submit' className='btn btn-success btn-sm'>Cadastrar</button>
